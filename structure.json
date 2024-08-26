@@ -1,0 +1,140 @@
+{
+  "get": {
+    "technologies": {
+      "list": "{{base}}/technologies"
+    },
+    "targets": {
+      "list": "{{base}}/targets",
+      "public": {
+        "platform": "{{base}}/public-targets/{{arg}}/history",
+        "all": "{{base}}/public-targets"
+      }
+    },
+    "single": {
+      "subdomain": "{{base}}/subdomains/details/{{arg}}",
+      "live": "{{base}}/subdomains/live/details/{{arg}}",
+      "http": "{{base}}/subdomains/http/details/{{arg}}",
+      "target": "{{base}}/targets/{{arg}}"
+    },
+    "subdomains": {
+      "all": "{{base}}/subdomains",
+      "domain": "{{base}}/subdomains?domain={{arg}}",
+      "scope": "{{base}}/subdomains?scope={{arg}}"
+    },
+    "lives": {
+      "scope": "{{base}}/subdomains/live?scope={{arg}}",
+      "all": "{{base}}/subdomains/live",
+      "domain": "{{base}}/subdomains/live?domain={{arg}}"
+    },
+    "http": {
+      "scope": "{{base}}/subdomains/http?scope={{arg}}",
+      "all": "{{base}}/subdomains/http",
+      "domain": "{{base}}/subdomains/http?domain={{arg}}"
+    },
+    "latest": {
+      "subdomains": {
+        "all": "{{base}}/subdomains?latest=true",
+        "domain": "{{base}}/subdomains?domain={{arg}}&latest=true",
+        "scope": "{{base}}/subdomains?scope={{arg}}&latest=true"
+      },
+      "lives": {
+        "all": "{{base}}/subdomains/live?latest=true",
+        "domain": "{{base}}/subdomains/live?domain={{arg}}&latest=true",
+        "scope": "{{base}}/subdomains/live?scope={{arg}}&latest=true"
+      },
+      "http": {
+        "scope": "{{base}}/subdomains/http?scope={{arg}}&latest=true",
+        "all": "{{base}}/subdomains/http?latest=true",
+        "domain": "{{base}}/subdomains/http?domain={{arg}}&latest=true"
+      }
+    },
+    "fresh": {
+      "subdomains": {
+        "all": "{{base}}/subdomains?fresh=true",
+        "domain": "{{base}}/subdomains?domain={{arg}}&fresh=true",
+        "scope": "{{base}}/subdomains?scope={{arg}}&fresh=true"
+      },
+      "lives": {
+        "all": "{{base}}/subdomains/live?fresh=true",
+        "domain": "{{base}}/subdomains/live?domain={{arg}}&fresh=true",
+        "scope": "{{base}}/subdomains/live?scope={{arg}}&fresh=true"
+      },
+      "http": {
+        "scope": "{{base}}/subdomains/http?scope={{arg}}&fresh=true",
+        "all": "{{base}}/subdomains/http?fresh=true",
+        "domain": "{{base}}/subdomains/http?domain={{arg}}&fresh=true"
+      }
+    },
+    "result": "{{base}}/test?{{arg}}",
+    "orch": {
+      "tasks": {
+        "active": "{{base}}/orchestration/tasks/active",
+        "failed": "{{base}}/orchestration/tasks/failed",
+        "delayed": "{{base}}/orchestration/tasks/delayed"
+      }
+    },
+    "statistics": {
+      "sqs": "{{base}}/statistics/sqs"
+    }
+  },
+  "regexp": {
+    "apply": "{{base}}/regexbox/create",
+    "test": {
+      "scope": "{{base}}/regexbox/test?count=true&scope={{arg}}",
+      "all": "{{base}}/regexbox/test?count=true"
+    },
+    "list": "{{base}}/regexbox"
+  },
+  "put": {
+    "subdomain": "{{base}}/subdomains/{{arg}}",
+    "resolution": "{{base}}/orchestration/targets/name-resolution/results",
+    "orch": {
+      "resolution": "{{base}}/orchestration/targets/name-resolution/results",
+      "http": "{{base}}/orchestration/targets/http/results/{{arg}}"
+    }
+  },
+  "target": {
+    "create": "{{base}}/targets",
+    "delete": "{{base}}/targets/{{arg}}"
+  },
+  "orch": {
+    "push": {
+      "subenum": "{{base}}/orchestration/subdomain-enumeration/push"
+    },
+    "targets": {
+      "update": "{{base}}/orchestration/tasks/active"
+    },
+    "resolution": {
+      "scope": "{{base}}/orchestration/targets/name-resolution?scope={{arg}}",
+      "all": "{{base}}/orchestration/targets/name-resolution"
+    },
+    "http": {
+      "all": "{{base}}/orchestration/targets/http",
+      "scope": "{{base}}/orchestration/targets/http?scope={{arg}}"
+    },
+    "clean": {
+      "database": {
+        "all": "{{base}}/orchestration/targets/clean",
+        "scope": "{{base}}/orchestration/targets/clean?scope={{arg}}"
+      },
+      "tags": {
+        "all": "{{base}}/orchestration/clean/tags",
+        "scope": "{{base}}/orchestration/clean/tags?scope={{arg}}"
+      },
+      "ips": {
+        "all": "{{base}}/orchestration/clean/ips",
+        "scope": "{{base}}/orchestration/clean/ips?scope={{arg}}"
+      },
+      "domains": {
+        "all": "{{base}}/orchestration/clean/domains",
+        "scope": "{{base}}/orchestration/clean/domains?scope={{arg}}"
+      }
+    },
+    "passive": {
+      "enum": {
+        "all": "{{base}}/orchestration/subdomain-enumeration/passive",
+        "scope": "{{base}}/orchestration/subdomain-enumeration/passive/?scope={{arg}}"
+      }
+    }
+  }
+}

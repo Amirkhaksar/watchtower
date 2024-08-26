@@ -1,0 +1,407 @@
+#compdef watchtower
+
+local -a main_funcs first second third forth
+
+_arguments -C \
+    '1:main:->main' \
+    '2:first:->first' \
+    '3:second:->second' \
+    '4:third:->third' \
+    '5:forth:->forth'
+
+main_funcs=(
+    'help:Help of flags and commands'
+    'get:Fetch data'
+    'orch:Orchestration section'
+    'regexp:Regexp section'
+    'put:Requests with PUT method'
+    'target:Delete/Create a target'
+    'init:Init watchtower environment files'
+    'update:Update watchtower'
+)
+
+# first
+help=(
+    'flags:Help of flags'
+    'get:Help of get commands'
+    'orch:Help of orch commands'
+    'regexp:Help of regexp commands'
+    'put:Help of put commands'
+    'target:Help of target commands'
+    'all:Help of all commands'
+    'version:Show version of watchtower'
+)
+
+regexp=(
+    'list:List of regexes'
+    'apply:Apply a regex'
+    'test:Test a regex'
+)
+
+target=(
+    'create:Create a target'
+    'delete:Delete a target'
+)
+
+get=(
+    'single:Show single data'
+    'subdomains:Get subdomains'
+    'lives:Get lives subdomains'
+    'http:Get http services'
+    'latest:Get latest subdomains'
+    'targets:Get targets data'
+    'fresh:Get fresh subdomains'
+    'statistics:Show targets'
+    'technologies:Show technologies data'
+)
+
+orch=(
+    'clean:Clean database'
+    'passive:Run passive'
+    'resolution:Run name resolution'
+    'http:Run httpx'
+    'targets:Update public targets'
+    'push:Push subdomain enumeration'
+)
+put=(
+    'resolution:Add name resolution'
+    'subdomain:Append a subdomain to scope'
+    'orch:Orchestration puts'
+)
+
+init=('autocomplete:Init "autocomplete" automaticality')
+
+# second
+single=(
+    'target:Get details of a single target'
+    'subdomain:Get details of a single subdomain'
+    'live:Get details of a single live subdomain'
+    'http:Get details of a single http service'
+)
+subdomains=(
+    'all:Get list of all subdomains'
+    'scope:Get list of subdomains by scope'
+    'domain:Get list of subdomains by domain'
+)
+lives=(
+    'all:Get list of all lives subdomains'
+    'scope:Get list of lives subdomains by scope'
+    'domain:Get list of a lives subdomains by domain'
+)
+http=(
+    'all:Get list of all http services'
+    'scope:Get list of http services by scope'
+    'domain:Get list of http services by domain'
+)
+latest=(
+    'subdomains:Get latest subdomains'
+    'lives:Get latest live subdomains'
+    'http:Get latest http subdomains'
+)
+targets=(
+    'list:Get list of targets'
+    'public:Get all public targets'
+)
+fresh=(
+    'subdomains:Get fresh subdomains'
+    'lives:Get fresh live subdomains'
+    'http:Get fresh http services'
+)
+statistics=(
+    'sqs:Show SQS logs'
+)
+technologies=(
+    'list:Show list of technologies'
+)
+
+test=(
+    'scope:Test regex by scope name'
+    'all:Test all regexes'
+)
+
+clean=(
+    'database:Clean database'
+    'tags:Clean tags'
+    'ips:Clean ips'
+    'domains:Clean domains'
+)
+
+push=(
+    'subenum:Subdomain enumeration push'
+)
+
+passive=('enum:Passive enumeration')
+
+resolution=(
+    'scope:Run name resolution on a scope'
+    'all:Run name resolution on all'
+)
+httpOrch=(
+    'scope:Run http service discovery on a scope'
+    'all:Run http service discovery on all'
+)
+targetsOrch=('update:Update targets list')
+
+orchPut=(
+    'resolution:Insert name resolution results'
+    'http:Insert http results'
+)
+
+# third
+latestLives=(
+    'all:Get list of all latest lives subdomains'
+    'scope:Get list of latest lives subdomains by scope'
+    'domain:Get list of latest lives subdomains by domain'
+)
+latestSubdomains=(
+    'all:Get list of all latest subdomains'
+    'scope:Get list of latest subdomains by scope'
+    'domain:Get list of latest subdomains by domain'
+)
+latestHttp=(
+    'all:Get list of all latest http subdomains'
+    'scope:Get list of latest http subdomains by scope'
+    'domain:Get list of latest http subdomains by domain'
+)
+freshHttp=(
+    'all:Get list of all fresh http services'
+    'scope:Get list of fresh http services by scope'
+    'domain:Get list of fresh http services by domain'
+)
+freshLives=(
+    'all:Get list of all fresh lives subdomains'
+    'scope:Get list of fresh lives subdomains by scope'
+    'domain:Get list of fresh lives subdomains by domain'
+)
+freshSubdomains=(
+    'all:Get list of all fresh subdomains'
+    'scope:Get list of fresh subdomains by scope'
+    'domain:Get list of fresh subdomains by domain'
+)
+database=( 
+    'scope:Clean database by scope'
+    'all:Clean database for all scopes'
+)
+tags=( 
+    'scope:Clean tags by scope'
+    'all:Clean tags for all scopes'
+)
+ips=( 
+    'scope:Clean ips by scope'
+    'all:Clean ips for all scopes'
+)
+domains=( 
+    'scope:Clean domains by scope'
+    'all:Clean domains for all scopes'
+)
+enum=(
+    'all:Run passive enumeration on all'
+    'scope:Run passive enumeration on a scope'
+)
+public=(
+    'all:Get all public targets'
+    'platform:Get public targets for a specific platform'
+)
+
+# variables
+target_name=('TARGET_NAME:Type target name as input')
+scope_name=('SCOPE_NAME:Type scope name as input')
+domain_name=('DOMAIN_NAME:Type domain name as input')
+subdomain_name=('SUBDOMAIN_NAME:Type subdomain name as input')
+platform_name=('PLATFORM_NAME:Type platform name as input')
+
+
+case $state in
+    (main)
+        _describe 'main' main_funcs
+        ;;
+    (first)
+        case $words[2] in
+            (help)
+                _describe 'help' help
+            ;;
+            (get)
+                _describe 'get' get
+            ;;
+            (orch)
+                _describe 'orch' orch
+            ;;
+            (regexp)
+                _describe 'regexp' regexp
+            ;;
+            (target)
+                _describe 'target' target
+            ;;
+            (put)
+                _describe 'put' put
+            ;;
+            (init)
+                _describe 'init' init
+            ;;
+        esac
+        ;;
+    (second)
+        case $words[2] in
+            (get)
+                case $words[3] in
+                    (single)
+                        _describe 'single' single
+                    ;;
+                    (subdomains)
+                        _describe 'subdomains' subdomains
+                    ;;
+                    (lives)
+                        _describe 'lives' lives
+                    ;;
+                    (http)
+                        _describe 'http' http
+                    ;;
+                    (latest)
+                        _describe 'latest' latest
+                    ;;
+                    (fresh)
+                        _describe 'fresh' fresh
+                    ;;
+                    (targets)
+                        _describe 'targets' targets
+                    ;;
+                    (statistics)
+                        _describe 'statistics' statistics
+                    ;;
+                    (technologies)
+                        _describe 'technologies' technologies
+                    ;;
+                esac 
+            ;;
+            (regexp)
+                if [[ $words[3] == "test" ]];then
+                    _describe 'test' test
+                fi
+            ;;
+            (orch)
+                case $words[3] in
+                    (push)
+                        _describe "push" push 
+                    ;;
+                    (clean)
+                        _describe "clean" clean 
+                    ;;
+                    (passive)
+                        _describe "passive" passive
+                    ;;
+                    (resolution)
+                        _describe "resolution" resolution
+                    ;;
+                    (http)
+                        _describe "httpOrch" httpOrch
+                    ;;
+                    (targets)
+                        _describe "targetsOrch" targetsOrch
+                    ;;
+                esac
+            ;;
+            (put)
+                case $words[3] in
+                    (subdomain)
+                        _describe "scope_name" scope_name
+                    ;;
+                    (orch)
+                        _describe "orchPut" orchPut
+                    ;;
+                esac
+            ;;
+            (target)
+                if [[ $words[3] == "delete" ]];then
+                    _describe "target_name" target_name
+                fi
+            ;;
+        esac   
+        ;;
+
+    (third)
+        case $words[3] in
+            (latest)
+                case $words[4] in
+                    (lives)
+                        _describe "latestLives" latestLives
+                    ;;
+                    (subdomains)
+                        _describe "latestSubdomains" latestSubdomains
+                    ;;
+                    (http) 
+                        _describe "latestHttp" latestHttp
+                    ;;
+                esac
+            ;;
+            (fresh)
+                case $words[4] in
+                    (lives)
+                        _describe "freshLives" freshLives
+                    ;;
+                    (subdomains)
+                        _describe "freshSubdomains" freshSubdomains
+                    ;;
+                    (http)
+                        _describe "freshHttp" freshHttp
+                    ;;
+                esac
+            ;;
+            (*)
+                case $words[4] in
+                    (scope)
+                        _describe "scope_name" scope_name
+                    ;;
+                    (target)
+                        _describe "target_name" target_name
+                    ;;
+                    (platform)
+                        _describe "platform_name" platform_name
+                    ;;
+                    (domain)
+                        _describe "domain_name" domain_name
+                    ;;
+                    (live)
+                        _describe "domain_name" domain_name
+                    ;;
+                    (subdomain)
+                        _describe "subdomain_name" subdomain_name
+                    ;;
+                    (http)
+                        _describe "subdomain_name" subdomain_name
+                    ;;
+                    (database)
+                        _describe "database" database
+                    ;;
+                    (ips)
+                        _describe "ips" ips
+                    ;;
+                    (domains)
+                        _describe "domains" domains
+                    ;;
+                    (tags)
+                        _describe "tags" tags
+                    ;;
+                    (enum)
+                        _describe "enum" enum
+                    ;;
+                    (public)
+                        _describe "public" public
+                    ;;
+                esac
+            ;;
+        esac
+    ;;
+    (forth)
+        case $words[5] in
+            (scope)
+                _describe "scope_name" scope_name
+            ;;
+            (platform)
+                _describe "platform_name" platform_name
+            ;;
+            (domain)
+                _describe "domain_name" domain_name
+            ;;
+        esac
+    ;;
+esac
