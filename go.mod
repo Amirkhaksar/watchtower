@@ -1,4 +1,4 @@
-module gitlab.com/Amirkhaksar/watchtower-client
+module github.com/Amirkhaksar/watchtower
 
 go 1.17
 
