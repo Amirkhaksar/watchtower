@@ -4,7 +4,7 @@ Go client for watchtower
 ## Installation
 ### Go install
 ```
-go install gitlab.com/Amirkhaksar/watchtower-client@main
+go install github.com/Amirkhaksar/watchtower@main
 watchtower init
 watchtower init autocompelete
 ```
@@ -12,7 +12,7 @@ watchtower init autocompelete
 
 ### Manual:
 ```
-git clone https://gitlab.com/Amirkhaksar/watchtower-client
+git clone https://github.com/Amirkhaksar/watchtower
 cd watchtower
 go build .
 ./init.sh
@@ -27,7 +27,7 @@ watchtower help flags
 ### Update Watch
 ```
 <<<<<<< HEAD
-go install gitlab.com/Amirkhaksar/watchtower-client@v1.1.0
+go install github.com/Amirkhaksar/watchtower@v1.1.0
 =======
 go install gitlab.com/Amirkhaksar/watchtower-client@latest
 >>>>>>> cb427464da4859867f124e5992f93a1fb12b7fcb
@@ -37,7 +37,7 @@ watchtower update
 ### Reinstall for new version
 ```bash
 rm -rf ~/.watch-client
-go install gitlab.com/Amirkhaksar/watchtower-client@latest
+go install github.com/Amirkhaksar/watchtower@latest
 watchtower init 
 # ---- Set IP, username and password at ~/.watchtower/.env
 watchtower init autocomplete
