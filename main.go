@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	repository = "https://raw.githubusercontent.com/Amirkhaksar/watchtower"
+	repository = "https://raw.githubusercontent.com/Amirkhaksar/watchtower/main/"
 	version    = "1.2.0"
 	directory  = "/.watchtower"
 )
